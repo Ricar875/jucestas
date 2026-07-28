@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nossos Mimos | Ju Cestas Especiais</title>
+<meta name="description" content="Flores, rosas, ursinhos de pelúcia, cestas especiais e presentes da Floricultura Ju Cestas Especiais em Paulo Afonso - BA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e0c0a;
+    --panel:#17140f;
+    --panel-2:#201b14;
+    --gold:#c9a24b;
+    --gold-soft:#e4c77a;
+    --blush:#d9a9a0;
+    --sage:#8a9a7e;
+    --cream:#f3ecdf;
+    --muted:#b8ae9c;
+    --line:rgba(201,162,75,0.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--ink);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;line-height:1.6;}
+  h1,h2,h3,.display{font-family:'Playfair Display',serif;font-weight:600;letter-spacing:0.01em;}
+  a{color:inherit;text-decoration:none;}
+  .eyebrow{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:0.28em;font-size:0.7rem;color:var(--gold-soft);font-weight:500;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(14,12,10,0.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:84px;}
+  .logo{font-family:'Playfair Display',serif;font-size:1.35rem;letter-spacing:0.02em;display:flex;align-items:center;gap:10px;}
+  .logo svg{width:26px;height:26px;flex-shrink:0;}
+  .navlinks{display:flex;align-items:center;gap:38px;}
+  .navlinks a{font-size:0.82rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--muted);transition:color .25s ease;}
+  .navlinks a:hover{color:var(--gold-soft);}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border:1px solid var(--gold);border-radius:2px;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink);background:var(--gold);transition:all .3s ease;}
+  .btn:hover{background:transparent;color:var(--gold-soft);}
+  .btn.small{padding:10px 18px;font-size:0.7rem;}
+
+  .page-hero{padding:100px 0 70px;text-align:center;position:relative;overflow:hidden;
+    background:radial-gradient(ellipse at 50% 0%, rgba(201,162,75,0.10), transparent 60%);}
+  .page-hero h1{font-size:clamp(2.4rem,5vw,3.6rem);margin-top:16px;}
+  .page-hero p{max-width:560px;margin:20px auto 0;color:var(--muted);}
+
+  .divider{display:flex;align-items:center;justify-content:center;margin:0 auto;}
+  .divider svg{width:120px;height:auto;opacity:0.8;}
+
+  .cat-nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:40px 0 20px;}
+  .cat-nav a{
+    font-size:0.74rem;text-transform:uppercase;letter-spacing:0.12em;
+    padding:10px 20px;border:1px solid var(--line);color:var(--muted);
+    transition:all .25s ease;
+  }
+  .cat-nav a:hover{border-color:var(--gold);color:var(--gold-soft);}
+
+  .category{padding:90px 0;}
+  .category:nth-of-type(even){background:var(--panel);}
+  .cat-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;flex-wrap:wrap;gap:20px;}
+  .cat-head .titles svg{width:34px;height:34px;color:var(--gold);margin-bottom:14px;}
+  .cat-head h2{font-size:clamp(1.8rem,3.4vw,2.5rem);}
+  .cat-head p{color:var(--muted);max-width:420px;margin-top:8px;font-size:0.95rem;}
+
+  .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+  .card{border:1px solid var(--line);background:var(--ink);}
+  .category:nth-of-type(even) .card{background:var(--panel-2);}
+  .card-img{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative;
+    background:radial-gradient(circle at 30% 25%, rgba(201,162,75,0.14), transparent 55%),
+               radial-gradient(circle at 75% 75%, rgba(217,169,160,0.13), transparent 55%),
+               linear-gradient(135deg,#221d16,#15120e);
+    border-bottom:1px solid var(--line);
+  }
+  .card-img svg{width:34%;opacity:0.55;}
+  .card-body{padding:24px 26px 28px;}
+  .card-body h3{font-size:1.15rem;margin-bottom:6px;font-weight:600;}
+  .card-body p{font-size:0.88rem;color:var(--muted);margin-bottom:18px;}
+  .card-body .price{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold-soft);font-size:1.05rem;margin-bottom:16px;}
+
+  .placeholder-note{
+    max-width:1180px;margin:0 auto;padding:0 32px 10px;
+    font-size:0.72rem;color:var(--muted);opacity:0.6;
+  }
+
+  footer{border-top:1px solid var(--line);padding:70px 0 40px;}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:50px;margin-bottom:56px;}
+  footer h4{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--gold-soft);margin-bottom:20px;}
+  footer .logo{margin-bottom:16px;}
+  footer p{color:var(--muted);font-size:0.92rem;max-width:320px;}
+  footer ul{list-style:none;}
+  footer li{margin-bottom:12px;}
+  footer li a{color:var(--muted);font-size:0.92rem;transition:color .25s ease;}
+  footer li a:hover{color:var(--gold-soft);}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:0.76rem;color:var(--muted);letter-spacing:0.03em;}
+
+  @media(max-width:900px){
+    .card-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:640px){
+    .card-grid{grid-template-columns:1fr;}
+    .navlinks{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" style="color:var(--gold)"><path d="M12 21c0-6-4-8-4-13a4 4 0 0 1 8 0c0 5-4 7-4 13z"/></svg>
+      Ju Cestas Especiais
+    </a>
+    <div class="navlinks">
+      <a href="index.html#visitar">A loja</a>
+      <a href="produtos.html">Nossos mimos</a>
+      <a href="index.html#contato">Contato</a>
+    </div>
+    <a class="btn" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido." target="_blank" rel="noopener">WhatsApp</a>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Catálogo</span>
+    <h1>Nossos Mimos</h1>
+    <p>Cada arranjo, cesta e presente é preparado à mão, pensado para o momento exato que você quer celebrar.</p>
+  </div>
+</section>
+
+<div class="divider">
+  <svg viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 20 H80" stroke="#c9a24b" stroke-width="1"/>
+    <path d="M120 20 H200" stroke="#c9a24b" stroke-width="1"/>
+    <path d="M100 20 C 95 8, 105 8, 100 20 C 95 32, 105 32, 100 20 Z" stroke="#c9a24b" stroke-width="1.2"/>
+  </svg>
+</div>
+
+<div class="cat-nav">
+  <a href="#flores">Flores &amp; Buquês</a>
+  <a href="#rosas">Rosas</a>
+  <a href="#ursinhos">Ursinhos de Pelúcia</a>
+  <a href="#cestas">Cestas Especiais</a>
+  <a href="#presentes">Presentes &amp; Mimos</a>
+</div>
+
+<p class="placeholder-note">As imagens abaixo são espaços reservados — substitua cada bloco "card-img" por fotos reais dos produtos.</p>
+
+<!-- ================= FLORES ================= -->
+<section class="category" id="flores">
+  <div class="wrap">
+    <div class="cat-head">
+      <div class="titles">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 21c0-6-4-8-4-13a4 4 0 0 1 8 0c0 5-4 7-4 13z"/></svg>
+        <h2>Flores &amp; Buquês</h2>
+        <p>Arranjos frescos para aniversários, agradecimentos e todas as datas especiais.</p>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-img"><svg viewBox="0 0 24 24" fill="none" stroke="#c9a24b" stroke-width="1.2"><path d="M12 21c0-6-4-8-4-13a4 4 0 0 1 8 0c0 5-4 7-4 13z"/></svg></div>
+        <div class="card-body">
+          <h3>Buquê do Dia</h3>
+          <p>Seleção de flores frescas da estação, montada na hora.</p>
+          <a class="btn small" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Buqu%C3%AA%20do%20Dia." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><svg viewBox="0 0 24 24" fill="none" stroke="#c9a24b" stroke-width="1.2"><path d="M12 21c0-6-4-8-4-13a4 4 0 0 1 8 0c0 5-4 7-4 13z"/></svg></div>
+        <div class="card-body">
+          <h3>Arranjo de Mesa</h3>
+          <p>Ideal para decoração de festas e eventos especiais.</p>
+          <a class="btn small" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Arranjo%20de%20Mesa." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><svg viewBox="0 0 24 24" fill="none" stroke="#c9a24b" stroke-width="1.2"><path d="M12 21c0-6-4-8-4-13a4 4 0 0 1 8 0c0 5-4 7-4 13z"/></svg></div>
+        <div class="card-body">
+          <h3>Buquê Tropical</h3>
+          <p>Flores exóticas e coloridas para um presente marcante.</p>
+          <a class="btn small" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Buqu%C3%AA%20Tropical." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ROSAS ================= -->
+<section class="category" id="rosas">
+  <div class="wrap">
+    <div class="cat-head">
+      <div class="titles">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="9" r="4.2"/><path d="M12 13v8M8 21h8"/></svg>
+        <h2>Rosas</h2>
+        <p>Do gesto simples ao clássico buquê de 24 rosas — a flor que nunca sai de moda.</p>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-img"><svg viewBox="0 0 24 24" fill="none" stroke="#d9a9a0" stroke-width="1.2"><circle cx="12" cy="9" r="4.2"/><path d="M12 13v8M8 21h8"/></svg></div>
+        <div class="card-body">
+          <h3>Rosa Única</h3>
+          <p>Um gesto simples e elegante, embalado com capricho.</p>
+          <a class="btn small" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Rosa%20%C3%9Anica." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><svg viewBox="0 0 24 24" fill="none" stroke="#d9a9a0" stroke-width="1.2"><circle cx="12" cy="9" r="4.2"/><path d="M12 13v8M8 21h8"/></svg></div>
+        <div class="card-body">
+          <h3>Buquê de 12 Rosas</h3>
+          <p>O clássico atemporal para dizer o que sente.</p>
+          <a class="btn small" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Buqu%C3%AA%20de%2012%20Rosas." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><svg viewBox="0 0 24 24" fill="none" stroke="#d9a9a0" stroke-width="1.2"><circle cx="12" cy="9" r="4.2"/><path d="M12 13v8M8 21h8"/></svg></div>
+        <div class="card-body">
+          <h3>Buquê de 24 Rosas</h3>
+          <p>Para ocasiões que merecem uma declaração à altura.</p>
+          <a class="btn small" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Buqu%C3%AA%20de%2024%20Rosas." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= URSINHOS ================= -->
+<section class="category" id="ursinhos">
+  <div class="wrap">
+    <div class="cat-head">
+      <div class="titles">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="9" cy="6" r="2"/><circle cx="15" cy="6" r="2"/><rect x="6" y="8" width="12" height="11" rx="5"/></svg>
+        <h2>Ursinhos de Pelúcia</h2>
+        <p>O companheiro fofo que acompanha flores, cestas ou vai sozinho como presente.</p>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-img"><svg viewBox="0 0 24 24" fill="none" stroke="#e4c77a" stroke-width="1.2"><circle cx="9" cy="6" r="2"/><circle cx="15" cy="6" r="2"/><rect x="6" y="8" width="12" height="11" rx="5"/></svg></div>
+        <div class="card-body">
+          <h3>Ursinho Pequeno</h3>
+          <p>Tamanho ideal para acompanhar um buquê ou cartão.</p>
+          <a class="btn small" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Ursinho%20Pequeno." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><svg viewBox="0 0 24 24" fill="none" stroke="#e4c77a" stroke-width="1.2"><circle cx="9" cy="6" r="2"/><circle cx="15" cy="6" r="2"/><rect x="6" y="8" width="12" height="11" rx="5"/></svg></div>
+        <div class="card-body">
+          <h3>Ursinho Médio</h3>
+          <p>O queridinho para presentear em qualquer ocasião.</p>
+          <a class="btn small" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Ursinho%20M%C3%A9dio." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><svg viewBox="0 0 24 24" fill="none" stroke="#e4c77a" stroke-width="1.2"><circle cx="9" cy="6" r="2"/><circle cx="15" cy="6" r="2"/><rect x="6" y="8" width="12" height="11" rx="5"/></svg></div>
+        <div class="card-body">
+          <h3>Ursinho Gigante</h3>
+          <p>Para um presente que ninguém vai esquecer.</p>
+          <a class="btn small" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Ursinho%20Gigante." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CESTAS ================= -->
+<section class="category" id="cestas">
+  <div class="wrap">
+    <div class="cat-head">
+      <div class="titles">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 10h16l-2 10H6L4 10z"/><path d="M8 10 A4 5 0 0 1 16 10"/></svg>
+        <h2>Cestas Especiais</h2>
+        <p>Cestas surpresa personalizadas, combinando flores, doces e mimos à sua escolha.</p>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-img"><svg viewBox="0 0 24 24" fill="none" stroke="#c9a24b" stroke-width="1.2"><path d="M4 10h16l-2 10H6L4 10z"/><path d="M8 10 A4 5 0 0 1 16 10"/></svg></div>
+        <div class="card-body">
+          <h3>Cesta Café da Manhã</h3>
+          <p>Comece o dia de alguém especial com uma cesta completa.</p>
+          <a class="btn small" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Cesta%20Caf%C3%A9%20da%20Manh%C3%A3." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><svg viewBox="0 0 24 24" fill="none" stroke="#c9a24b" stroke-width="1.2"><path d="M4 10h16l-2 10H6L4 10z"/><path d="M8 10 A4 5 0 0 1 16 10"/></svg></div>
+        <div class="card-body">
+          <h3>Cesta de Chocolates</h3>
+          <p>Seleção de chocolates finos para adoçar o momento.</p>
+          <a class="btn small" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Cesta%20de%20Chocolates." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><svg viewBox="0 0 24 24" fill="none" stroke="#c9a24b" stroke-width="1.2"><path d="M4 10h16l-2 10H6L4 10z"/><path d="M8 10 A4 5 0 0 1 16 10"/></svg></div>
+        <div class="card-body">
+          <h3>Cesta Personalizada</h3>
+          <p>Monte a sua combinação de flores, doces e mimos.</p>
+          <a class="btn small" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20montar%20uma%20Cesta%20Personalizada." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRESENTES ================= -->
+<section class="category" id="presentes">
+  <div class="wrap">
+    <div class="cat-head">
+      <div class="titles">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M4 9h16M12 9v11M12 9c-2-3-6-3-6 0M12 9c2-3 6-3 6 0"/></svg>
+        <h2>Presentes &amp; Mimos</h2>
+        <p>Detalhes que completam o presente: cartões, balões, chaveiros e mais.</p>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-img"><svg viewBox="0 0 24 24" fill="none" stroke="#d9a9a0" stroke-width="1.2"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M4 9h16M12 9v11M12 9c-2-3-6-3-6 0M12 9c2-3 6-3 6 0"/></svg></div>
+        <div class="card-body">
+          <h3>Cartão Personalizado</h3>
+          <p>Uma mensagem escrita à mão para acompanhar seu mimo.</p>
+          <a class="btn small" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20incluir%20um%20Cart%C3%A3o%20Personalizado." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><svg viewBox="0 0 24 24" fill="none" stroke="#d9a9a0" stroke-width="1.2"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M4 9h16M12 9v11M12 9c-2-3-6-3-6 0M12 9c2-3 6-3 6 0"/></svg></div>
+        <div class="card-body">
+          <h3>Balões</h3>
+          <p>Adicione cor e festa ao seu presente.</p>
+          <a class="btn small" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20incluir%20Bal%C3%B5es." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><svg viewBox="0 0 24 24" fill="none" stroke="#d9a9a0" stroke-width="1.2"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M4 9h16M12 9v11M12 9c-2-3-6-3-6 0M12 9c2-3 6-3 6 0"/></svg></div>
+        <div class="card-body">
+          <h3>Combo Completo</h3>
+          <p>Flores, ursinho e cesta juntos — o mimo completo.</p>
+          <a class="btn small" href="https://wa.me/5575988541128?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Combo%20Completo." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contato">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" style="color:var(--gold)"><path d="M12 21c0-6-4-8-4-13a4 4 0 0 1 8 0c0 5-4 7-4 13z"/></svg>
+          Ju Cestas Especiais
+        </a>
+        <p>Floricultura em Paulo Afonso - BA. Mimos e presentes feitos com carinho para cada ocasião especial.</p>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="index.html#visitar">A loja</a></li>
+          <li><a href="produtos.html">Nossos mimos</a></li>
+          <li><a href="https://www.instagram.com/floricultura_jucestas" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5575988541128" target="_blank" rel="noopener">(75) 98854-1128</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=R.+Osvaldo+Cruz%2C+291+-+Centro%2C+Paulo+Afonso+-+BA" target="_blank" rel="noopener">R. Osvaldo Cruz, 291 — Centro</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Floricultura Ju Cestas Especiais</span>
+      <span>Paulo Afonso — Bahia</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
